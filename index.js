@@ -3,6 +3,7 @@ for (var i = 0; i < document.querySelectorAll(".drum").length; i++) {
 
     var buttonInnerHTML = this.innerHTML;
     musicAdder(buttonInnerHTML);
+    buttonAnimation(buttonInnerHTML);
 
   });
 
@@ -10,6 +11,7 @@ for (var i = 0; i < document.querySelectorAll(".drum").length; i++) {
 
 document.addEventListener("keypress", function (event) {
   musicAdder(event.key)
+  buttonAnimation(event.key)
 })
 
 function musicAdder(key) {
@@ -49,3 +51,11 @@ function musicAdder(key) {
 
 }
 
+function buttonAnimation(curentKey) {
+  var activeButton = document.querySelector("." + curentKey)
+  activeButton.classList.add("pressed");
+
+  setTimeout(function () {
+    activeButton.classList.remove("pressed")
+  }, 100)
+}
